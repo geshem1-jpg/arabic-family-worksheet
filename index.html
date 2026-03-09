@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>אל-עילה: דף עבודה ומצגת אינטראקטיבית</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 12px; shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        .section { margin-bottom: 40px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; }
+        .presentation-mode { font-size: 1.5rem; background-color: #e8f4fd; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #bdc3c7; padding: 12px; text-align: center; }
+        th { background-color: #3498db; color: white; }
+        input[type="text"] { padding: 8px; width: 80%; border: 1px solid #ccc; border-radius: 4px; }
+        .btn { background-color: #27ae60; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+        .btn:hover { background-color: #219150; }
+        .feedback { margin-top: 10px; font-weight: bold; }
+        .arabic-text { font-family: 'Times New Roman', serif; font-size: 1.3rem; color: #2980b9; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>אל-עילה (אִלְעֵילָה) - המשפחה</h1>
+
+    <div class="section presentation-mode">
+        <h2>1. אוצר מילים בסיסי (הקניה)</h2>
+        <p>שימו לב לכינוי השייכות "שלי" (סיומת <b>ִי</b>):</p>
+        <table>
+            <tr>
+                <th>ערבית (תעתיק)</th>
+                <th>עברית</th>
+            </tr>
+            <tr><td class="arabic-text">אַבּוּי (Abuy)</td><td>אבא שלי</td></tr>
+            <tr><td class="arabic-text">אֻמִּי (Ummi)</td><td>אמא שלי</td></tr>
+            <tr><td class="arabic-text">אַח'וּי (Akhuy)</td><td>אח שלי</td></tr>
+            <tr><td class="arabic-text">אֻחְ'תִי (Ukhti)</td><td>אחותי</td></tr>
+            <tr><td class="arabic-text">סִידִי / גֶ'דִּי</td><td>סבא שלי</td></tr>
+            <tr><td class="arabic-text">סִתִּי / גֶ'דַּתִי</td><td>סבתא שלי</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>2. תרגול כינויי שייכות</h2>
+        <p>השלימו את המילה "אסם" (שם) עם הסיומת המתאימה:</p>
+        <div id="suffixes">
+            <p>השם <b>שלו</b>: <span class="arabic-text">אִסְמוֹ</span></p>
+            <p>השם <b>שלה</b>: <input type="text" id="q1" placeholder="הקלידו בערבית/תעתיק"> (תשובה: אִסֵמְהַא)</p>
+            <p>השם <b>שלך (זכר)</b>: <input type="text" id="q2" placeholder="..."> (תשובה: אִסְמַכּ)</p>
+        </div>
+        <button class="btn" onclick="checkSuffixes()">בדוק תשובות</button>
+        <div id="feedback1" class="feedback"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. מה הם עובדים? (מַדַא בִּיִשְׁתְעִ'לּוּ?)</h2>
+        <p>תרגמו את המקצועות הבאים (היעזרו בעמ' 19):</p>
+        <ul>
+            <li>מורה (זכר): <input type="text" id="p1"> (מֻעַלִּם)</li>
+            <li>רופאה: <input type="text" id="p2"> (דֻכְּתוֹרָה)</li>
+            <li>שוטר: <input type="text" id="p3"> (שֻׁרְטִי)</li>
+        </ul>
+        <button class="btn" onclick="checkProfessions()">בדוק מקצועות</button>
+    </div>
+
+    <div class="section" style="background-color: #fff9e6;">
+        <h2>4. הבנת הנקרא: עֵילַת ראני (משפחת ראני)</h2>
+        <p class="arabic-text" style="line-height: 1.8;">
+            אִסְמִי רַאני, וַאַנַא מִן עֵילֶת מַנְסוּר. עֻמְרִי תְנַעְשַׁר סַנֶה.<br>
+            אַנַא סַאכֵּן מַע עֵילְתִי פִי מַדִינַת חֵיפַא.<br>
+            אִסְם אַבּוּי יוּסֵף, וְהֻוַ רַגֻ'ל אַעְמַאל. אִסְם אֻמִּי סַלְמַא, וְהִיַ מֻמַרִּדַ'ה פִי מֻסְתַשְׁפַא.
+        </p>
+        <hr>
+        <p><b>שאלות:</b></p>
+        <p>1. איפה ראני גר? <input type="text" id="read1"></p>
+        <p>2. מה המקצוע של אמא של ראני? <input type="text" id="read2"></p>
+        <button class="btn" onclick="checkReading()">בדוק הבנה</button>
+    </div>
+</div>
+
+<script>
+    function checkSuffixes() {
+        const a1 = document.getElementById('q1').value.trim();
+        const a2 = document.getElementById('q2').value.trim();
+        let score = 0;
+        if(a1.includes('הא') || a1.includes('ha')) score++;
+        if(a2.includes('כ') || a2.includes('ak')) score++;
+        document.getElementById('feedback1').innerText = "צדקת ב-" + score + " מתוך 2";
+    }
+
+    function checkProfessions() {
+        alert("כל הכבוד על התרגול! השוו את התשובות עם הטבלה בעמ' 19.");
+    }
+
+    function checkReading() {
+        const r1 = document.getElementById('read1').value;
+        const r2 = document.getElementById('read2').value;
+        if(r1.includes('חיפה') && (r2.includes('אחות') || r2.includes('ממרד')) ) {
+            alert("מצוין! הבנת היטב את הטקסט.");
+        } else {
+            alert("נסו שוב, היעזרו בטקסט הצבוע בצהוב.");
+        }
+    }
+</script>
+
+</body>
+</html>
